@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>もぐらたたきゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!--説明画面-->
+  <div id="startScreen">
+    <h1 class="gameTitle">もぐらたたきゲーム</h1>
+    <p class="gameExplain">下の画像と同じ怒っている顔のもぐらをたたこう！<br>間違えるとポイントがマイナスされるよ</p>
+    <div class="correctMole"><img src="mole-correct.png" alt="correctMole"></div>
+    <button id="startButton">START</button>
+  </div>
+
+  <!--ゲーム画面(最初は非表示)-->
+  <div id="game-container" class="hidden">
+    <div id="game-status"></div>
+    <div id="time">
+      <span>残り時間:</span> 
+      <span id="timeValue">10</span>秒
+    </div>
+    <div id="score">得点: 0点</div>
+    <div id="holes-container">
+      <!-- 4x4の穴を作る -->
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+      <div class="hole"><img src="hole.png" alt="hole" class="hole-img"></div>
+    </div>
+  </div>
+
+  <!-- ゲーム終了画面（最初は非表示） -->
+<div id="endScreen" class="hidden">
+  <h1 id="gameOverText">ゲーム終了！</h1>
+  <p id="finalScore">得点: 0点</p>
+  <button id="restartButton">もう一度プレイ</button>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
