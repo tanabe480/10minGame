@@ -1,0 +1,222 @@
+/* フォント */
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;   /* テキスト選択を無効化 */
+    -webkit-user-drag: none; /* 画像のドラッグを禁止 */
+    pointer-events: auto; /* クリックを有効にする（念のため） */
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('field07.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* 画像を繰り返さない */
+    margin: 0; /* 余白をなくす */
+    padding: 0; /* 余白をなくす */
+  }
+  
+  /* ゲーム画面を隠す */
+  .hidden {
+    display: none !important;
+  }
+
+  /*　スタート画面のモグラの見本*/
+  .correctMole img {
+    width: 300px;
+    height: auto;
+    padding: 50px; /* 余白を増やすと吹き出しが大きくなる */
+    background: url("hukidasi02.png") no-repeat center / 100% auto;
+  }
+
+  /* スタート画面のスタイル */
+  #startScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Mochiy Pop One", serif; /*フォント*/
+    font-weight: 500; /*太さ*/
+    text-align: center;
+    font-size: 24px;
+    color: #ff909ff3;
+    text-shadow: 1.2px 1.2px 1.2px black;
+  }
+
+  /*スタートボタンのスタイル*/
+  #startButton {
+    font-family: "Mochiy Pop One", serif; /*フォント*/
+    font-weight: 500; /*太さ*/
+    text-align: center;
+    font-size: 40px; 
+    color: #fff;
+    background-color: #eb6100;
+    padding: 1px 12px;
+    border-radius: 10px;
+    border: 2px solid #a54500; /* フチの太さと色 */
+    cursor: pointer; /* カーソルをポインターに */
+  }
+
+  /*スタートボタンのホバー*/
+  #startButton:hover {
+    color: #eb6100;
+    background-color: #fff;
+  }
+
+  /* ゲームコンテナのスタイル */
+  #game-container {
+    text-align: center;
+  }
+  
+  #holes-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .hole {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .hole-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /*画像全体を表示*/
+  }
+  
+  .mole, .wrong01, .wrongMole02 {
+    position: absolute; /*.holeを基準に配置*/
+    width: 80px;
+    height: 80px;
+    top: -10px;
+    left: 10px;
+    cursor: pointer;
+    display: none;
+    object-fit: contain;
+    animation-name: moles-move;
+    animation-duration: 5s;
+  }
+  
+  @keyframes moles-move { /*モグラが出るアニメーション*/
+    0%{
+        top: -5px;
+    }
+    10%{
+        top: -10px;
+    }
+    20%{
+        top: -20px;
+    }
+    30%{
+        top: -25px;
+    }
+    50%{
+        top: -30px;
+    }
+    80%{
+        top: -33px;
+    }
+    100%{
+        top: -36px;
+    }
+  }
+  
+  #time {
+    font-family: "Mochiy Pop One", serif; 
+    font-size: 34px; 
+    margin-bottom: 10px; 
+    text-align: center;
+    color: #ff7152;
+    text-shadow:
+    -1.5px -1.5px 1.5px white,  /* 左上 */
+    1.5px -1.5px 1.5px white,  /* 右上 */
+    -1.5px 1.5px 1.5px white,  /* 左下 */
+    1.5px 1.5px 1.5px white;  /* 右下 */
+  }
+  #timeValue {
+    display: inline-block;
+    min-width: 30px;  /* 1桁のときも幅が変わらないように */
+    text-align: center;
+}
+  
+  #score {
+    font-family: "Mochiy Pop One", serif; 
+    font-size: 30px;
+    text-align: center;
+    color: #ff7152;
+    text-shadow:
+    -1.5px -1.5px 1.5px white,  /* 左上 */
+    1.5px -1.5px 1.5px white,  /* 右上 */
+    -1.5px 1.5px 1.5px white,  /* 左下 */
+    1.5px 1.5px 1.5px white;  /* 右下 */
+  }
+
+  /*　ゲーム終了画面　*/
+  #endScreen {
+    position: fixed;
+    width: 500px;
+    height: 450px;
+    top: 55%;
+    left: 50%;
+    gap: 45px;
+    font-family: "Mochiy Pop One", serif; /*フォント*/
+    transform: translate(-50%, -50%);
+    background-color: #fff9d8; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FF5733;
+    font-size: 28px;
+    text-align: center;
+    z-index: 1000; /* 最前面に表示 */
+    border-radius: 50px;
+    border: 15px dashed #FFAA4C; /* 太めのオレンジレッドの縁 */
+  }
+
+  #gameOverText {
+    text-align: center;
+    font-size: 50px;
+    color: #FF5733;
+  }
+
+  #finalScore {
+    text-align: center;
+    font-size: 40px;
+    color: #FF5733;
+    margin-bottom: 20px;
+  }
+
+  /*　リスタートボタン　*/
+  #restartButton {
+    font-family: "Mochiy Pop One", serif; /*フォント*/
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(30, 158, 26);
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+  #restartButton:hover {
+    background-color: rgb(15, 78, 13);
+  }
+  
